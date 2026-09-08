@@ -1,0 +1,15 @@
+{
+  "name": "Iglesia Evangélica de Dios Pentecostal de Talca",
+  "short_name": "IEDP Talca",
+  "description": "Horarios de reunión, actividades, avisos y documentos de la congregación.",
+  "lang": "es-CL",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#060d21",
+  "theme_color": "#060d21",
+  "icons": [
+    { "src": "imagenes/iconos/icono-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "imagenes/iconos/icono-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "imagenes/iconos/icono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

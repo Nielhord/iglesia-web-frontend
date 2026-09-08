@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Página no encontrada | IEDP Talca</title>
+  <meta name="description" content="La página que buscas no existe o cambió de dirección.">
+
+  <link rel="icon" href="imagenes/logo-sin.fondo.png">
+  <link rel="apple-touch-icon" href="imagenes/iconos/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#060d21">
+
+  <!-- Una página de error no debe aparecer en los buscadores. -->
+  <meta name="robots" content="noindex, follow">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/paginas.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR (COMPONENTE) -->
+  <div id="navbar"></div>
+
+  <main>
+
+    <section class="error-seccion">
+      <div class="container">
+
+        <p class="error-codigo" aria-hidden="true">404</p>
+
+        <h1 class="error-titulo">Esta página no existe</h1>
+
+        <p class="error-texto">
+          El enlace puede estar mal escrito, o la página cambió de dirección.
+          Desde aquí puedes volver a lo de siempre.
+        </p>
+
+        <div class="error-acciones">
+          <a class="error-btn" href="index.html">Ir a la portada</a>
+          <a class="error-btn error-btn-suave" href="documentos.html">Ver documentos</a>
+        </div>
+
+        <p class="error-ayuda">
+          Si llegaste desde un enlace del propio sitio, avísale a la
+          administración de la iglesia para que lo corrijan.
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PIE (COMPONENTE) -->
+  <div id="pie"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/pie.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Iglesia Evangélica de Dios Pentecostal de Talca
+User-agent: *
+Allow: /
+
+# Páginas internas de gestión: no tiene sentido que salgan en Google.
+Disallow: /aprobaciones.html
+Disallow: /usuarios.html
+Disallow: /gestion-documentos.html
+
+Sitemap: https://www.iglesiapentecostal.cl/sitemap.xml

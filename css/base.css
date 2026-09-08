@@ -1,0 +1,91 @@
+/* =================================================================
+   BASE — se carga en todas las páginas.
+   Tipografía, variables de color y estilos compartidos.
+   ================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;600;700&display=swap');
+
+:root {
+  /* Marca */
+  --dorado: #b8963e;
+  --dorado-oscuro: #9a7a2e;
+  --dorado-claro: #f0c060;
+  --azul-noche: #060d21;
+
+  /* Texto */
+  --texto: #111111;
+  --texto-suave: #5a5a5a;
+
+  /* Superficies */
+  --fondo: #ffffff;
+  --fondo-alt: #f7f6f3;
+  --borde: rgba(0, 0, 0, 0.12);
+
+  /* Estado */
+  --verde: #4ade80;
+  --rojo: #d64545;
+
+  --radio: 14px;
+  --sombra: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  /* Las fuentes se cargaban pero nunca se aplicaban. */
+  font-family: 'Lato', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  color: var(--texto);
+  background-color: var(--fondo);
+}
+
+h1, h2, h3,
+.hero-title,
+.temples-title,
+.temple-name {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+}
+
+/* La navbar y las etiquetas en mayúsculas se leen mejor en Lato. */
+.custom-navbar,
+.hero-card-label,
+.temple-label,
+.hero-btn {
+  font-family: 'Lato', system-ui, sans-serif;
+}
+
+/* ===== FOCO VISIBLE (accesibilidad de teclado) ===== */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--dorado);
+  outline-offset: 2px;
+}
+
+/* ===== ANIMACIONES GLOBALES ===== */
+
+/* Estaba anidada dentro de @media (max-width:700px), así que el punto
+   verde de "En curso" solo latía en móvil. Ahora es global. */
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5); }
+  70%  { box-shadow: 0 0 0 7px rgba(74, 222, 128, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+/* Respeta a quien pide menos movimiento en su sistema operativo. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

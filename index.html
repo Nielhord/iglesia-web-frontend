@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Iglesia Evangélica de Dios Pentecostal | IEDP Talca</title>
+    <meta name="description" content="Iglesia Evangélica de Dios Pentecostal en Talca, Maule. Horarios de reunión, templos locales y documentos de la congregación. C. 14 Sur 1551, Talca.">
+
+    <link rel="icon" href="imagenes/logo-sin.fondo.png">
+
+    <link rel="apple-touch-icon" href="imagenes/iconos/apple-touch-icon.png">
+
+    <link rel="manifest" href="site.webmanifest">
+
+    <meta name="theme-color" content="#060d21">
+
+    <!-- Open Graph: cómo se ve el enlace al compartirlo en WhatsApp o redes -->
+    <meta property="og:url" content="https://www.iglesiapentecostal.cl/">
+    <link rel="canonical" href="https://www.iglesiapentecostal.cl/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CL">
+    <meta property="og:site_name" content="IEDP Talca">
+    <meta property="og:title" content="Iglesia Evangélica de Dios Pentecostal | IEDP Talca">
+    <meta property="og:description" content="Horarios de reunión, templos locales y documentos de la congregación en Talca, Maule.">
+    <meta property="og:image" content="https://www.iglesiapentecostal.cl/imagenes/logo.jpg">
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    >
+
+    <!-- CSS BASE (tipografía, variables, animaciones) -->
+    <link rel="stylesheet" href="css/base.css">
+
+    <!-- CSS NAVBAR -->
+    <link rel="stylesheet" href="css/navbar.css">
+
+    <!-- CSS INDEX -->
+    <link rel="stylesheet" href="css/index.css">
+  </head>
+
+  <body>
+
+    <!-- NAVBAR -->
+    <div id="navbar"></div>
+
+    <main>
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+
+        <h1 class="hero-title">Bienvenidos</h1>
+
+        <!-- js/portada.js sustituye estos textos por los guardados en la API.
+             Lo que hay escrito aquí es el respaldo si el servidor no responde. -->
+        <p class="hero-verse-text" data-contenido="versiculo_texto">
+          Yo me alegré con los que me decían:<br>
+          A la casa de Jehová iremos.
+        </p>
+
+        <p class="hero-verse-ref" data-contenido="versiculo_referencia">
+          Salmos 122:1
+        </p>
+
+        <!-- Botón de edición: js/portada.js solo lo muestra a editores y
+             administradores. La API rechaza al resto igualmente. -->
+        <button type="button" class="hero-editar" data-editar-versiculo hidden>
+          Editar versículo
+        </button>
+
+        <a href="#quienes-somos" class="hero-btn">
+          CONÓCENOS MÁS
+        </a>
+
+      </div>
+
+    <!-- CARD DESKTOP -->
+    <div class="hero-card">
+      <div class="hero-card-event">
+      
+        <!-- BADGE EN CURSO -->
+        <div id="meetingBadge" style="display:none; align-items:center; gap:7px; margin-bottom:0.6rem;">
+          <span style="
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #4ade80;
+            box-shadow: 0 0 0 3px rgba(74,222,128,0.3);
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+          "></span>
+          <span style="font-size:0.75rem; font-weight:700; color:#4ade80; letter-spacing:0.1em; text-transform:uppercase;">En curso</span>
+        </div>
+      
+        <span class="hero-card-label" id="meetingLabel">Próxima reunión</span>
+        <p class="hero-card-day" id="meetingDay"></p>
+        <div class="hero-card-time" id="meetingTime"></div>
+      
+      </div>
+    <div class="hero-card-divider"></div>
+
+        <!-- MAPA -->
+        <a
+          class="hero-card-map"
+          href="https://maps.app.goo.gl/tKL4XgENGnDKrS5Q8"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Ver ubicación en Google Maps"
+        >
+
+          <picture>
+            <source srcset="imagenes/ubicacion.webp" type="image/webp">
+            <img
+              src="imagenes/ubicacion.png"
+              alt="Ubicación Iglesia IEDP Talca"
+              class="hero-card-map-img"
+              width="918"
+              height="679"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+
+          <div class="hero-card-map-overlay">
+
+            <svg xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true">
+
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+
+            </svg>
+
+            Abrir en Google Maps
+
+          </div>
+        </a>
+
+        <p class="hero-card-address">
+          C. 14 Sur 1551, Talca, Maule
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- ===== QUIÉNES SOMOS ===== -->
+
+  <section class="nosotros-section" id="quienes-somos">
+
+    <div class="container">
+
+      <h2 class="nosotros-title">Quiénes somos</h2>
+
+      <p class="nosotros-intro">
+        Somos la Iglesia Evangélica de Dios Pentecostal de Talca, una
+        congregación que se reúne en el sector de 14 Sur para adorar a Dios,
+        estudiar su Palabra y acompañarse en el camino de la fe. Nuestras
+        puertas están abiertas a toda persona que quiera acercarse, sin importar
+        de dónde venga ni en qué momento de su vida se encuentre.
+      </p>
+
+      <div class="nosotros-tarjetas">
+
+        <article class="nosotros-card">
+          <h3 class="nosotros-card-title">Nuestra misión</h3>
+          <p class="nosotros-card-text">
+            Anunciar el evangelio de Jesucristo en Talca y sus alrededores,
+            formar discípulos firmes en la Palabra y servir a nuestra comunidad
+            con hechos concretos, para que cada persona encuentre en la iglesia
+            un lugar donde crecer y ser acogida.
+          </p>
+        </article>
+
+        <article class="nosotros-card">
+          <h3 class="nosotros-card-title">Nuestra visión</h3>
+          <p class="nosotros-card-text">
+            Ser una congregación viva y unida, en la que cada generación
+            —niños, jóvenes, varones y damas— tenga su lugar y su servicio, y
+            desde la cual salgan familias que lleven el mensaje de Cristo a toda
+            la región del Maule.
+          </p>
+        </article>
+
+        <article class="nosotros-card">
+          <h3 class="nosotros-card-title">En qué creemos</h3>
+          <p class="nosotros-card-text">
+            Creemos en un solo Dios, en la salvación por gracia mediante la fe
+            en Jesucristo, en la autoridad de las Sagradas Escrituras y en la
+            obra del Espíritu Santo, que sostiene y guía a la iglesia cada día.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+    <!-- ===== TEMPLOS LOCALES ===== -->
+
+  <section class="temples-section" id="templos-locales">
+
+    <div class="container">
+      <h2 class="temples-title">Templos Locales</h2>
+    </div>
+      <!-- WRAPPER -->
+      <div class="temples-wrapper">
+
+        <!-- FLECHA IZQUIERDA -->
+        <button
+          type="button"
+          class="temples-arrow temples-arrow-left"
+          aria-label="Ver templos anteriores"
+          aria-controls="templesGrid"
+        >
+          <span aria-hidden="true">&#10094;</span>
+        </button>
+
+        <!-- CARDS -->
+        <div class="temples-grid" id="templesGrid">
+
+          <!-- CARD -->
+          <div class="temple-card">
+
+            <h3 class="temple-name">
+              Templo Maule
+            </h3>
+
+            <p class="temple-label">
+              Días de reunión:
+            </p>
+
+            <p class="temple-days">
+              Lunes y miércoles a las 20:00 hrs.
+            </p>
+
+            <a
+              href="https://maps.app.goo.gl/rxooL4By6t49J1216"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="temple-location"
+            >
+
+              <svg xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+
+              </svg>
+
+              San Martín #095. Esquina Prat, Maule
+
+            </a>
+
+          </div>
+
+          <!-- CARD -->
+          <div class="temple-card">
+
+            <h3 class="temple-name">
+              Templo Numpay
+            </h3>
+
+            <p class="temple-label">
+              Días de reunión:
+            </p>
+
+            <p class="temple-days">
+              Lunes y miércoles a las 20:00 hrs.
+            </p>
+
+            <a
+              href="https://maps.app.goo.gl/iRtjX72BPm2TV1k2A"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="temple-location"
+            >
+
+              <svg xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+
+              </svg>
+
+              Parcela N°43, sitio #22 Villa Numpay, Maule
+
+            </a>
+
+          </div>
+
+          <!-- CARD -->
+          <div class="temple-card">
+
+            <h3 class="temple-name">
+              Templo San Luis
+            </h3>
+
+            <p class="temple-label">
+              Días de reunión:
+            </p>
+
+            <p class="temple-days">
+              Lunes y miércoles a las 20:00 hrs.
+            </p>
+
+            <a
+              href="https://maps.app.goo.gl/jjVPHXME4w9DWWeN7"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="temple-location"
+            >
+
+              <svg xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+
+              </svg>
+
+              Pasaje Treinta y Uno y Medio Ote. B #655, Dpto. 101
+
+            </a>
+
+          </div>
+
+          <!-- CARD -->
+          <div class="temple-card">
+
+            <h3 class="temple-name">
+              Templo San Miguel
+            </h3>
+
+            <p class="temple-label">
+              Días de reunión:
+            </p>
+
+            <p class="temple-days">
+              Lunes y miércoles a las 20:00 hrs.<br>
+              Domingos a las 18:00 hrs.
+            </p>
+
+            <a
+              href="https://maps.app.goo.gl/oHdRrqdHb3cN56pp7"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="temple-location"
+            >
+
+              <svg xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+
+              </svg>
+
+               Oriente #22. Población San Miguel del Piduco, Talca
+
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- FLECHA DERECHA -->
+        <button
+          type="button"
+          class="temples-arrow temples-arrow-right"
+          aria-label="Ver más templos"
+          aria-controls="templesGrid"
+        >
+          <span aria-hidden="true">&#10095;</span>
+        </button>
+
+      </div>
+
+
+  </section>
+
+    </main>
+
+    <!-- PIE (COMPONENTE) -->
+    <div id="pie"></div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/pie.js"></script>
+    <script src="js/inicio.js"></script>
+  <script src="js/portada.js"></script>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+</html>

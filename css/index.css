@@ -1,0 +1,925 @@
+/* =================================================================
+   PORTADA — hero y sección de templos.
+   La tipografía, las variables de color y @keyframes pulse
+   viven en base.css, que se carga antes que este archivo.
+   ================================================================= */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 92vh;
+
+  /* El PNG es el respaldo para navegadores sin image-set(); los demás se
+     llevan el WebP, que pesa 277 KB en vez de 2,3 MB. */
+  background-image: url('../imagenes/fondo2.png');
+  background-image: image-set(
+    url('../imagenes/fondo2.webp') type('image/webp'),
+    url('../imagenes/fondo2.png') type('image/png')
+  );
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+/* ===== OVERLAY ===== */
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(6, 13, 33, 0.55) 0%,
+    rgba(6, 13, 33, 0.72) 100%
+  );
+}
+
+/* ===== HERO CONTENT ===== */
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  color: #fff;
+
+  padding-left: clamp(40px, 8vw, 120px);
+
+  max-width: 600px;
+}
+
+/* ===== TITLE ===== */
+
+.hero-title {
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+
+  font-weight: 700;
+
+  line-height: 1.1;
+
+  margin-bottom: 1.2rem;
+
+  letter-spacing: -0.5px;
+}
+
+/* ===== VERSE ===== */
+
+.hero-verse-text {
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+
+  font-weight: 400;
+
+  font-style: italic;
+
+  line-height: 1.6;
+
+  margin-bottom: 0.3rem;
+
+  opacity: 0.92;
+}
+
+/* ===== VERSE REF ===== */
+
+.hero-verse-ref {
+  font-size: 0.9rem;
+
+  font-weight: 400;
+
+  letter-spacing: 0.05em;
+
+  opacity: 0.75;
+
+  margin-bottom: 2rem;
+}
+
+/* ===== BUTTON ===== */
+
+.hero-btn {
+  display: inline-block;
+
+  background-color: #b8963e;
+
+  color: #fff;
+
+  text-decoration: none;
+
+  padding: 12px 28px;
+
+  font-size: 0.85rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  transition:
+    background-color 0.25s ease,
+    transform 0.2s ease;
+}
+
+.hero-btn:hover {
+  background-color: #9a7a2e;
+
+  color: #fff;
+
+  transform: translateY(-1px);
+}
+
+/* ===== HERO CARD ===== */
+
+.hero-card {
+  position: absolute;
+
+  right: clamp(30px, 6vw, 100px);
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  z-index: 3;
+
+  width: 360px;
+
+  padding: 1.4rem 1.5rem;
+
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.10);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+
+  border-radius: 14px;
+}
+
+/* ===== CARD TEXT ===== */
+
+.hero-card-label {
+  display: block;
+
+  margin-bottom: 0.5rem;
+
+  font-size: 0.7rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+
+  opacity: 0.65;
+}
+
+.hero-card-day {
+  margin: 0;
+
+  font-size: 1.1rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.02em;
+}
+
+.hero-card-time {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  margin-top: 0.7rem;
+
+  font-size: 1.1rem;
+
+  font-weight: 700;
+
+  color: #f0c060;
+}
+
+.hero-card-divider {
+  height: 1px;
+
+  margin: 1rem 0;
+
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== MAP IMAGE ===== */
+
+.hero-card-map {
+  display: block;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 12px;
+
+  text-decoration: none;
+}
+
+.hero-card-map-img {
+  width: 100%;
+
+  height: 220px;
+
+  object-fit: cover;
+
+  display: block;
+
+  border-radius: 12px;
+
+  filter: brightness(0.92);
+
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+
+.hero-card-map:hover .hero-card-map-img {
+  transform: scale(1.03);
+
+  filter: brightness(0.7);
+}
+
+/* ===== MAP OVERLAY ===== */
+
+.hero-card-map-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 6px;
+
+  background: rgba(6, 13, 33, 0.55);
+
+  color: #fff;
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  opacity: 0;
+
+  transition: opacity 0.2s ease;
+}
+
+.hero-card-map:hover .hero-card-map-overlay {
+  opacity: 1;
+}
+
+/* ===== ADDRESS ===== */
+
+.hero-card-address {
+  margin-top: 0.8rem;
+
+  text-align: center;
+
+  font-size: 0.78rem;
+
+  line-height: 1.4;
+
+  opacity: 0.7;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1100px) {
+
+  .hero {
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 5rem 0 3rem 0;
+
+    min-height: auto;
+  }
+
+  .hero-content {
+    padding: 0 24px;
+
+    max-width: 100%;
+
+    text-align: center;
+  }
+
+  /* EL MISMO CARD ahora baja debajo */
+  .hero-card {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    width: calc(100% - 40px);
+    max-width: 420px;
+    margin: 2rem auto 0 auto;
+  }
+}
+
+/* ================================================= */
+/* ===== TEMPLOS LOCALES =========================== */
+/* ================================================= */
+
+.temples-section {
+  padding: 80px 40px;
+  background: var(--fondo);
+  overflow: hidden;
+}
+
+/* ================================================= */
+/* ===== TITLE ===================================== */
+/* ================================================= */
+
+.temples-title {
+  text-align: center;
+  margin-bottom: 4rem;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 700;
+  color: #111;
+}
+
+/* ================================================= */
+/* ===== WRAPPER =================================== */
+/* ================================================= */
+
+.temples-wrapper {
+
+  position: relative;
+
+  width: 100%;
+}
+
+/* ================================================= */
+/* ===== DESKTOP GRID ============================== */
+/* ================================================= */
+
+.temples-grid {
+  width: 100%;
+  display: grid !important;
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* ================================================= */
+/* ===== CARD ====================================== */
+/* ================================================= */
+
+.temple-card {
+
+  width: 100%;
+
+  min-height: 260px;
+
+  padding: 2rem 1.7rem;
+
+  border-radius: 20px;
+
+  background: #ffffff; /*FONDO DE LAS CARDS*/
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border:
+    1px solid rgba(0, 0, 0, 1);
+
+
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+  box-sizing: border-box;
+}
+
+
+/* ================================================= */
+/* ===== TEXT ====================================== */
+/* ================================================= */
+
+.temple-name {
+
+  margin-bottom: 1rem;
+
+  font-size: 1.35rem;
+
+  font-weight: 700;
+
+  color: #111;
+}
+
+.temple-label {
+
+  margin-bottom: 0.4rem;
+
+  font-size: 0.78rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  color: #b8963e;
+}
+
+.temple-days {
+
+  margin-bottom: 1.5rem;
+
+  font-size: 0.8rem;
+
+  font-weight: 600;
+
+  line-height: 1.6;
+
+  color: #000000;
+}
+
+/* ================================================= */
+/* ===== LOCATION ================================== */
+/* ================================================= */
+
+.temple-location {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--texto);
+  text-decoration: underline;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.temple-location svg {
+  flex-shrink: 0;        /* 👈 no se comprime */
+  width: 22px;           /* 👈 tamaño uniforme más grande */
+  height: 22px;
+  margin-top: 2px;       /* 👈 alinea bien con el texto */
+}
+
+.temple-location:hover {
+  color: #b8963e;
+  transform: translateX(2px);
+}
+
+/* ================================================= */
+/* ===== ARROWS HIDDEN DESKTOP ===================== */
+/* ================================================= */
+
+.temples-arrow {
+  display: none;
+}
+
+/* ================================================= */
+/* ===== TABLET / SMALL DESKTOP ==================== */
+/* ================================================= */
+
+@media (max-width: 1200px) {
+
+  .temples-grid {
+    display: flex !important;
+    overflow-x: auto;
+    gap: 1.4rem;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding: 0 40px;
+    scrollbar-width: none;
+    background: #ffffff; /* FONDO DEL CARRUSEL */
+  }
+
+  .temples-grid::-webkit-scrollbar {
+
+    display: none;
+  }
+
+  .temple-card {
+
+    flex: 0 0 340px;
+
+    scroll-snap-align: center;
+  }
+
+  /* ===== ARROWS ===== */
+
+  .temples-arrow {
+
+    display: flex;
+
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 10;
+
+    width: 46px;
+    height: 46px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.96);
+
+    box-shadow:
+      0 8px 24px rgba(0,0,0,0.15);
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-size: 1.1rem;
+
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .temples-arrow:hover {
+
+    transform:
+      translateY(-50%)
+      scale(1.05);
+  }
+
+  .temples-arrow-left {
+
+    left: -10px;
+  }
+
+  .temples-arrow-right {
+
+    right: -10px;
+  }
+}
+
+/* ================================================= */
+/* ===== MOBILE ==================================== */
+/* ================================================= */
+
+@media (max-width: 700px) {
+
+  .temples-section {
+
+    padding: 80px 0;
+  }
+
+  .temples-title {
+
+    margin-bottom: 2.5rem;
+  }
+
+  .temple-card {
+
+    flex: 0 0 88%;
+  }
+
+  .temples-arrow {
+
+    width: 40px;
+    height: 40px;
+  }
+}
+/* ================================================= */
+/* ===== QUIÉNES SOMOS ============================= */
+/* ================================================= */
+
+.nosotros-section {
+  padding: 80px 40px;
+  background: var(--fondo-alt);
+}
+
+.nosotros-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 700;
+  color: #111;
+}
+
+.nosotros-intro {
+  max-width: 62ch;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--texto-suave);
+}
+
+.nosotros-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.6rem;
+}
+
+.nosotros-card {
+  padding: 2rem 1.8rem;
+  border: 1px solid var(--borde);
+  /* La franja dorada superior repite el acento del resto del sitio. */
+  border-top: 3px solid var(--dorado);
+  border-radius: var(--radio);
+  background: var(--fondo);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.nosotros-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra);
+}
+
+.nosotros-card-title {
+  margin: 0 0 0.9rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.nosotros-card-text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--texto-suave);
+}
+
+@media (max-width: 600px) {
+  .nosotros-section { padding: 60px 22px; }
+  .nosotros-card { padding: 1.6rem 1.3rem; }
+}
+
+/* ================================================= */
+/* ===== VERSÍCULO EDITABLE ======================== */
+/* ================================================= */
+
+/* El versículo se guarda con saltos de línea de verdad, no con <br>. */
+.hero-verse-text { white-space: pre-line; }
+
+/* Botón discreto: solo lo ven editores y administradores. */
+.hero-editar {
+  display: block;
+  margin: 0 0 1.4rem;
+  padding: 0.3rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.hero-editar:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.hero-editor {
+  max-width: 460px;
+  margin: 0 0 1.6rem;
+  padding: 1.3rem;
+  border-radius: var(--radio);
+  /* Fondo propio: el hero es una foto y el texto plano no se leería. */
+  background: rgba(6, 13, 33, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  text-align: left;
+}
+
+.hero-editor-titulo {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.hero-editor-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.9rem;
+}
+
+.hero-editor-campo span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.hero-editor-campo input,
+.hero-editor-campo textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  font-family: inherit;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #fff;
+  resize: vertical;
+}
+
+.hero-editor-campo input:focus,
+.hero-editor-campo textarea:focus {
+  outline: none;
+  border-color: var(--dorado);
+  box-shadow: 0 0 0 3px rgba(184, 150, 62, 0.25);
+}
+
+.hero-editor-aviso {
+  margin: 0 0 0.9rem;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-editor-error { color: #ff9d9d; }
+
+.hero-editor-acciones {
+  display: flex;
+  gap: 0.6rem;
+}
+
+/* ================================================= */
+/* ===== PIE DE PÁGINA ============================= */
+/* ================================================= */
+
+.pie {
+  padding: 70px 40px 30px;
+  /* Fondo oscuro: cierra la página y separa el pie del contenido claro. */
+  background: var(--azul-noche);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.pie-columnas {
+  display: grid;
+  /* La primera columna es más ancha porque lleva el texto de presentación. */
+  grid-template-columns: 1.6fr repeat(3, 1fr);
+  gap: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.pie-logo {
+  display: block;
+  margin-bottom: 1rem;
+  width: 56px;
+  height: auto;
+}
+
+.pie-nombre {
+  margin: 0 0 0.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.pie-texto {
+  margin: 0;
+  max-width: 40ch;
+  font-size: 0.88rem;
+}
+
+.pie-titulo {
+  margin: 0 0 1.1rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dorado-claro);
+}
+
+.pie-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  font-style: normal;   /* <address> llega en cursiva por defecto */
+}
+
+.pie-enlace {
+  display: block;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.pie-enlace:hover,
+.pie-enlace:focus-visible {
+  color: var(--dorado-claro);
+}
+
+/* Etiqueta pequeña encima del dato ("Teléfono", "Correo"…). */
+.pie-etiqueta {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.pie-horarios li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pie-horarios li:last-child { border-bottom: none; }
+
+.pie-horarios span:last-child {
+  font-weight: 600;
+  color: #fff;
+}
+
+/* --- Cierre: copyright y redes --- */
+
+.pie-cierre {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.pie-copyright {
+  margin: 0;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.pie-redes {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.pie-red {
+  display: inline-block;
+  padding: 0.35rem 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.pie-red:hover,
+.pie-red:focus-visible {
+  background: var(--dorado);
+  border-color: var(--dorado);
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .pie-columnas {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .pie-marca { grid-column: 1 / -1; }
+}
+
+@media (max-width: 560px) {
+  .pie { padding: 50px 22px 25px; }
+  .pie-columnas { grid-template-columns: 1fr; }
+  .pie-cierre { justify-content: center; text-align: center; }
+}

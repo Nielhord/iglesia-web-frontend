@@ -1,0 +1,143 @@
+<nav class="navbar navbar-expand-md custom-navbar">
+
+  <div class="container">
+
+    <!-- LOGO -->
+    <a class="navbar-brand fw-bold" href="index.html">
+      IEDP Talca
+    </a>
+
+    <!-- BOTÓN HAMBURGUESA -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarScroll"
+      aria-controls="navbarScroll"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- NAVBAR CONTENT -->
+    <div class="collapse navbar-collapse" id="navbarScroll">
+
+      <!-- LINKS -->
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            Inicio
+          </a>
+        </li>
+
+        <!-- La radio vive en un sitio aparte. Se abre en otra pestaña para
+             que la emisión no se corte al volver a la página. -->
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="https://gentle-vacherin-1befe6.netlify.app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Radio
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="documentos.html">
+            Documentos
+          </a>
+        </li>
+
+        <!-- Editores y administradores gestionan documentos. -->
+        <li class="nav-item" data-solo-gestor hidden>
+          <a class="nav-link" href="gestion-documentos.html">
+            Gestionar
+          </a>
+        </li>
+
+        <!-- Solo para administradores. js/navbar.js lo muestra cuando la
+             sesión tiene rol admin; el servidor lo protege de verdad. -->
+        <li class="nav-item" data-solo-admin hidden>
+          <a class="nav-link" href="aprobaciones.html">
+            Aprobaciones
+            <span class="badge-pendientes" data-badge-pendientes hidden></span>
+          </a>
+        </li>
+
+        <li class="nav-item" data-solo-admin hidden>
+          <a class="nav-link" href="usuarios.html">
+            Usuarios
+          </a>
+        </li>
+
+        <!-- DROPDOWN -->
+        <li class="nav-item dropdown">
+
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Ramas
+          </a>
+
+          <ul class="dropdown-menu">
+
+            <li>
+              <a class="dropdown-item" href="varones.html">
+                Varones en Acción
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="dorcas.html">
+                Dorcas
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="coro.html">
+                Coro Instrumental
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="jovenes.html">
+                Avanzada Juvenil
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="escuela.html">
+                Escuela Bíblica Dominical
+              </a>
+            </li>
+
+          </ul>
+        </li>
+
+      </ul>
+
+      <!-- AUTH -->
+      <!-- js/navbar.js reemplaza el contenido de esta zona por el nombre
+           del usuario y el botón de salir cuando hay sesión iniciada. -->
+      <div class="d-flex gap-3 align-items-center" data-zona-auth>
+
+        <a href="login.html" class="nav-link">
+          Iniciar sesión
+        </a>
+
+        <a href="register.html" class="nav-link">
+          Registrarse
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</nav>

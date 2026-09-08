@@ -1,0 +1,1263 @@
+/* =================================================================
+   PÁGINAS INTERIORES — cabecera, listados de documentos y formularios.
+   Requiere base.css (variables de color y tipografía).
+   ================================================================= */
+
+/* ===== CABECERA DE PÁGINA ===== */
+
+.pagina-header {
+  padding: 3.5rem 0 2.5rem;
+  border-bottom: 1px solid var(--borde);
+  background: var(--fondo-alt);
+}
+
+.pagina-titulo {
+  margin: 0 0 0.6rem;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  color: var(--texto);
+}
+
+.pagina-bajada {
+  margin: 0;
+  max-width: 60ch;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--texto-suave);
+}
+
+.pagina-contenido {
+  padding: 3rem 0 5rem;
+}
+
+/* ===== FILTROS ===== */
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.filtro-btn {
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  background: transparent;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filtro-btn:hover {
+  border-color: var(--dorado);
+  color: var(--texto);
+}
+
+.filtro-btn[aria-pressed="true"] {
+  border-color: var(--dorado);
+  background: var(--dorado);
+  color: #fff;
+}
+
+/* ===== LISTA DE DOCUMENTOS ===== */
+
+.documentos-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.documento-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.4rem;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--fondo);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.documento-card:hover {
+  border-color: var(--dorado);
+  box-shadow: var(--sombra);
+  transform: translateY(-2px);
+}
+
+.documento-cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.documento-titulo {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  color: var(--texto);
+}
+
+.documento-tipo {
+  flex-shrink: 0;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  background: var(--fondo-alt);
+  border: 1px solid var(--borde);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+.documento-descripcion {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--texto-suave);
+}
+
+.documento-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.65rem;
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+}
+
+/* Separador visible entre datos. Sin él, el gap de flexbox los separa en
+   pantalla pero al copiar el texto salen todos pegados. */
+.documento-meta > span + span::before {
+  content: "·";
+  margin-right: 0.65rem;
+  color: var(--borde);
+}
+
+.documento-acciones {
+  margin-top: auto;
+  padding-top: 0.6rem;
+}
+
+.documento-descargar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background: var(--dorado);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.documento-descargar:hover {
+  background: var(--dorado-oscuro);
+  color: #fff;
+}
+
+/* ===== ESTADOS ===== */
+
+.estado {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--texto-suave);
+}
+
+.estado-cargando::before {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 28px;
+  margin: 0 auto 1rem;
+  border: 3px solid var(--borde);
+  border-top-color: var(--dorado);
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+}
+
+.estado-error {
+  border: 1px solid rgba(214, 69, 69, 0.3);
+  border-radius: var(--radio);
+  background: rgba(214, 69, 69, 0.05);
+  color: var(--rojo);
+}
+
+/* ===== PAGINACIÓN ===== */
+
+.paginacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.paginacion button {
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  background: transparent;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.paginacion button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.paginacion-info {
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+}
+
+/* =================================================================
+   FORMULARIOS DE AUTENTICACIÓN
+   ================================================================= */
+
+.auth-seccion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 62px);
+  padding: 3rem 1.25rem;
+  background: var(--fondo-alt);
+}
+
+.auth-caja {
+  width: 100%;
+  max-width: 430px;
+  padding: 2.5rem;
+  border: 1px solid var(--borde);
+  border-radius: 18px;
+  background: var(--fondo);
+  box-shadow: var(--sombra);
+}
+
+.auth-titulo {
+  margin: 0 0 0.5rem;
+  font-size: 1.9rem;
+  text-align: center;
+}
+
+.auth-bajada {
+  margin: 0 0 2rem;
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--texto-suave);
+}
+
+.campo {
+  margin-bottom: 1.15rem;
+}
+
+.campo label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--texto);
+}
+
+.campo input {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--texto);
+  background: var(--fondo);
+  transition: border-color 0.2s ease;
+}
+
+.campo input:focus {
+  border-color: var(--dorado);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(184, 150, 62, 0.15);
+}
+
+.campo-ayuda {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+}
+
+.btn-principal {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  background: var(--dorado);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-principal:hover:not(:disabled) {
+  background: var(--dorado-oscuro);
+  transform: translateY(-1px);
+}
+
+.btn-principal:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.auth-pie {
+  margin: 1.6rem 0 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+.auth-pie a {
+  color: var(--dorado-oscuro);
+  font-weight: 700;
+}
+
+/* ===== MENSAJES DE FORMULARIO ===== */
+
+.mensaje {
+  margin-bottom: 1.25rem;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.mensaje-error {
+  border: 1px solid rgba(214, 69, 69, 0.35);
+  background: rgba(214, 69, 69, 0.07);
+  color: #9b2c2c;
+}
+
+.mensaje-ok {
+  border: 1px solid rgba(74, 222, 128, 0.45);
+  background: rgba(74, 222, 128, 0.10);
+  color: #1a6b3c;
+}
+
+/* Solo para lectores de pantalla. */
+.solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* =================================================================
+   APROBACIÓN DE REGISTROS  (aprobaciones.html)
+   ================================================================= */
+
+.solicitudes-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.solicitud-card {
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--fondo);
+  transition: opacity 0.2s ease;
+}
+
+/* Mientras se resuelve la petición, la fila se atenúa y no acepta clics. */
+.solicitud-ocupada {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.solicitud-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.solicitud-nombre {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  /* Un nombre muy largo no debe desbordar la tarjeta. */
+  overflow-wrap: anywhere;
+}
+
+.solicitud-estado {
+  flex-shrink: 0;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.solicitud-estado-pendiente {
+  background: rgba(184, 150, 62, 0.15);
+  color: var(--dorado-oscuro);
+}
+
+.solicitud-estado-aprobado {
+  background: rgba(74, 222, 128, 0.18);
+  color: #1c7a41;
+}
+
+.solicitud-estado-rechazado {
+  background: rgba(214, 69, 69, 0.13);
+  color: var(--rojo);
+}
+
+.solicitud-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.65rem;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  overflow-wrap: anywhere;
+}
+
+.solicitud-meta > span + span::before {
+  content: "·";
+  margin-right: 0.65rem;
+  color: var(--borde);
+}
+
+.solicitud-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.btn-solicitud {
+  padding: 0.45rem 1.1rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-solicitud:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-aprobar {
+  background: #1c7a41;
+  color: #fff;
+}
+
+.btn-aprobar:hover:not(:disabled) {
+  background: #166534;
+}
+
+.btn-rechazar {
+  background: transparent;
+  border-color: var(--rojo);
+  color: var(--rojo);
+}
+
+.btn-rechazar:hover:not(:disabled) {
+  background: var(--rojo);
+  color: #fff;
+}
+
+.solicitud-aviso {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--texto-suave);
+}
+
+.solicitud-resultado {
+  margin: 0.9rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.solicitud-resultado-ok    { color: #1c7a41; }
+.solicitud-resultado-error { color: var(--rojo); }
+
+/* =================================================================
+   GESTIÓN DE CUENTAS  (usuarios.html)
+   ================================================================= */
+
+.usuario-insignias {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.usuario-rol {
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--texto-suave);
+}
+
+.usuario-rol-editor {
+  border-color: var(--dorado);
+  color: var(--dorado-oscuro);
+}
+
+.usuario-rol-admin {
+  border-color: transparent;
+  background: var(--azul-noche);
+  color: #fff;
+}
+
+.usuario-form {
+  margin-top: 1.1rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--borde);
+}
+
+.usuario-rejilla {
+  display: grid;
+  gap: 0.9rem 1.1rem;
+  /* Una sola columna en móvil; dos en cuanto haya sitio. */
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+/* Los campos de esta rejilla son más compactos que los del login. */
+.usuario-rejilla .campo {
+  margin-bottom: 0;
+}
+
+.usuario-rejilla .campo input,
+.usuario-rejilla .campo select {
+  width: 100%;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  background: var(--fondo);
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: var(--texto);
+}
+
+.usuario-rejilla .campo select:disabled {
+  background: var(--fondo-alt);
+  color: var(--texto-suave);
+  cursor: not-allowed;
+}
+
+.usuario-rejilla .campo input:focus,
+.usuario-rejilla .campo select:focus {
+  outline: none;
+  border-color: var(--dorado);
+  box-shadow: 0 0 0 3px rgba(184, 150, 62, 0.18);
+}
+
+.usuario-rejilla .campo-ayuda {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  color: var(--texto-suave);
+}
+
+/* =================================================================
+   GESTIÓN DE DOCUMENTOS  (gestion-documentos.html)
+   ================================================================= */
+
+.subida-caja {
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--fondo-alt);
+}
+
+.subida-titulo {
+  margin: 0 0 1.1rem;
+  font-size: 1.2rem;
+}
+
+/* Dentro de la caja de subida el formulario no lleva la línea superior que
+   sí separa el formulario de edición del resto de la tarjeta. */
+.subida-form {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+/* La descripción ocupa el ancho completo de la rejilla. */
+.campo-ancho {
+  grid-column: 1 / -1;
+}
+
+.usuario-rejilla .campo textarea {
+  width: 100%;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  background: var(--fondo);
+  font-family: inherit;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--texto);
+  resize: vertical;
+}
+
+.usuario-rejilla .campo textarea:focus {
+  outline: none;
+  border-color: var(--dorado);
+  box-shadow: 0 0 0 3px rgba(184, 150, 62, 0.18);
+}
+
+.usuario-rejilla .campo input[type="file"] {
+  padding: 0.4rem;
+  font-size: 0.82rem;
+}
+
+/* El enlace de descarga convive con los botones de guardar y eliminar, así
+   que se alinea con ellos en vez de arrastrar su margen de tarjeta. */
+.solicitud-acciones .documento-descargar {
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+/* ============================================================
+   ZONA BLOQUEADA (js/acceso.js)
+   Lo que ve alguien sin sesión en Documentos y en las ramas:
+   tarjetas grises de relleno y, encima, el aviso.
+   ============================================================ */
+
+.acceso-zona {
+  position: relative;
+  min-height: 340px;
+}
+
+/* --- Relleno gris de fondo --- */
+
+.acceso-fantasma {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.2rem;
+  /* Sin saturación y muy tenue: se lee como "aquí hay algo, pero apagado". */
+  filter: grayscale(1);
+  opacity: 0.55;
+  user-select: none;
+}
+
+.acceso-fantasma-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1.4rem;
+  min-height: 150px;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--fondo-alt);
+}
+
+.acceso-barra {
+  display: block;
+  height: 11px;
+  border-radius: 999px;
+  background: #d4d4d4;
+}
+
+.acceso-barra-titulo {
+  height: 15px;
+  width: 65%;
+  background: #bcbcbc;
+}
+
+.acceso-barra-corta {
+  width: 40%;
+}
+
+/* --- Aviso encima --- */
+
+.acceso-aviso {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-radius: var(--radio);
+  /* Velo claro sobre el relleno para que el texto se lea sin problema. */
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(3px);
+}
+
+.acceso-candado {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.acceso-titulo {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--texto);
+}
+
+.acceso-texto {
+  margin: 0;
+  max-width: 42ch;
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+.acceso-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-top: 0.6rem;
+}
+
+.acceso-btn {
+  padding: 0.55rem 1.4rem;
+  border: 1px solid var(--dorado);
+  border-radius: 999px;
+  background: var(--dorado);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.acceso-btn:hover,
+.acceso-btn:focus-visible {
+  background: var(--dorado-oscuro);
+  border-color: var(--dorado-oscuro);
+  color: #ffffff;
+}
+
+.acceso-btn-suave {
+  background: transparent;
+  color: var(--dorado-oscuro);
+}
+
+.acceso-btn-suave:hover,
+.acceso-btn-suave:focus-visible {
+  background: var(--dorado);
+  color: #ffffff;
+}
+
+.acceso-nota {
+  margin: 0.4rem 0 0;
+  max-width: 44ch;
+  color: var(--texto-suave);
+  font-size: 0.82rem;
+}
+
+/* En pantallas bajas el aviso deja de flotar y se apila, para que no tape
+   el relleno ni se salga de la caja. */
+@media (max-width: 480px) {
+  .acceso-aviso {
+    position: static;
+    background: var(--fondo-alt);
+    border: 1px solid var(--borde);
+    backdrop-filter: none;
+  }
+
+  .acceso-fantasma {
+    display: none;
+  }
+}
+
+/* ============================================================
+   PÁGINAS DE RAMA: calendario + avisos a la izquierda,
+   documentos con scroll propio a la derecha (js/rama.js)
+   ============================================================ */
+
+.rama-columnas {
+  display: grid;
+  /* La izquierda manda; los documentos ocupan una columna fija más estrecha. */
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 1.8rem;
+  align-items: start;
+}
+
+.rama-columna {
+  min-width: 0;   /* sin esto, una tarjeta ancha desborda la rejilla */
+}
+
+.rama-columna-docs {
+  padding: 1.2rem;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--fondo-alt);
+}
+
+.rama-encabezado {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* La caja de documentos no estira la página: se desplaza por dentro. */
+.rama-scroll {
+  max-height: 620px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 0.5rem;
+}
+
+.rama-scroll::-webkit-scrollbar { width: 9px; }
+.rama-scroll::-webkit-scrollbar-track { background: transparent; }
+.rama-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 999px;
+}
+.rama-scroll::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.3); }
+
+/* Dentro de la caja estrecha, las tarjetas van en una sola columna. */
+.rama-scroll .documentos-lista { grid-template-columns: 1fr; }
+
+/* --- Pestañas Calendario / Avisos --- */
+
+.rama-pestanas {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid var(--borde);
+}
+
+.rama-pestana {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.rama-pestana:hover { color: var(--texto); }
+
+.rama-pestana[aria-selected="true"] {
+  color: var(--dorado-oscuro);
+  border-bottom-color: var(--dorado);
+}
+
+/* --- Calendario --- */
+
+.cal-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--borde);
+}
+
+.cal-mes {
+  flex: 1;
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 0.01em;
+}
+
+.cal-flecha {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--borde);
+  border-radius: 50%;
+  background: var(--fondo);
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--texto);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.cal-flecha:hover {
+  background: var(--dorado);
+  border-color: var(--dorado);
+  color: #ffffff;
+}
+
+/* --- Agenda y avisos --- */
+
+.agenda-lista,
+.avisos-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.agenda-item,
+.aviso-item {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--borde);
+  border-left: 3px solid var(--dorado);
+  border-radius: 10px;
+  background: var(--fondo);
+}
+
+.agenda-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+/* Bloque de fecha: el número del día grande y el mes debajo. */
+.agenda-dia {
+  flex: 0 0 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0;
+  border-radius: 8px;
+  background: var(--fondo-alt);
+}
+
+.agenda-dia-numero {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--dorado-oscuro);
+}
+
+.agenda-dia-mes {
+  margin-top: 0.15rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--texto-suave);
+}
+
+.agenda-cuerpo {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Lo de hoy resalta; lo ya pasado se apaga sin llegar a esconderse. */
+.agenda-hoy {
+  border-left-color: var(--dorado-claro);
+  background: rgba(240, 192, 96, 0.08);
+}
+
+.agenda-hoy .agenda-dia { background: var(--dorado); }
+.agenda-hoy .agenda-dia-numero,
+.agenda-hoy .agenda-dia-mes { color: #ffffff; }
+
+.agenda-pasada { opacity: 0.62; }
+
+.agenda-chip {
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: var(--dorado);
+  color: #ffffff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  vertical-align: middle;
+}
+
+.agenda-detalle {
+  margin: 0.3rem 0 0;
+  font-size: 0.82rem;
+  color: var(--texto-suave);
+}
+
+.agenda-vacia {
+  padding: 1.2rem;
+  border: 1px dashed var(--borde);
+  border-radius: 10px;
+  text-align: center;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+.agenda-titulo,
+.aviso-titulo {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.agenda-texto,
+.aviso-cuerpo {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  /* Un aviso largo respeta los saltos de línea que escribió el editor. */
+  white-space: pre-wrap;
+}
+
+.aviso-cabecera {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.aviso-fijado {
+  border-left-color: var(--dorado-claro);
+  background: rgba(240, 192, 96, 0.09);
+}
+
+.aviso-chip {
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: var(--dorado);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.aviso-pie {
+  margin: 0.6rem 0 0;
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+}
+
+/* --- Botones de gestión (solo editores y admins) --- */
+
+.rama-acciones {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.rama-btn-nuevo {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1.2rem;
+  border: 1px dashed var(--dorado);
+  border-radius: 999px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dorado-oscuro);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.rama-btn-nuevo:hover {
+  background: var(--dorado);
+  border-style: solid;
+  color: #ffffff;
+}
+
+.rama-form {
+  margin-top: 1.2rem;
+  padding: 1.2rem;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--fondo-alt);
+}
+
+.rama-form-titulo {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.rama-form-campos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 0.9rem;
+}
+
+.rama-form-campos .campo-ancho { grid-column: 1 / -1; }
+
+.rama-form-campos .campo-casilla {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.rama-form-campos .campo-casilla input {
+  width: auto;
+  margin: 0;
+}
+
+.rama-form-acciones {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1.1rem;
+}
+
+/* --- Apilado en pantallas medianas y pequeñas --- */
+
+@media (max-width: 900px) {
+  .rama-columnas { grid-template-columns: 1fr; }
+  .rama-scroll { max-height: 480px; }
+}
+
+@media (max-width: 480px) {
+  .rama-pestana { flex: 1; padding: 0.55rem 0.5rem; }
+  .agenda-dia { flex-basis: 44px; }
+  .agenda-dia-numero { font-size: 1.25rem; }
+}
+
+/* Los botones de las ramas reutilizan la base .btn-solicitud; solo cambia
+   el color según lo que hace cada uno. */
+.btn-guardar {
+  background: var(--dorado);
+  border-color: var(--dorado);
+  color: #ffffff;
+}
+
+.btn-guardar:hover:not(:disabled) {
+  background: var(--dorado-oscuro);
+  border-color: var(--dorado-oscuro);
+}
+
+.btn-cancelar,
+.btn-editar {
+  background: transparent;
+  border-color: var(--borde);
+  color: var(--texto);
+}
+
+.btn-cancelar:hover:not(:disabled),
+.btn-editar:hover:not(:disabled) {
+  border-color: var(--dorado);
+  color: var(--dorado-oscuro);
+}
+
+.btn-eliminar {
+  background: transparent;
+  border-color: var(--rojo);
+  color: var(--rojo);
+}
+
+.btn-eliminar:hover:not(:disabled) {
+  background: var(--rojo);
+  color: #ffffff;
+}
+
+/* ============================================================
+   PÁGINA 404
+   ============================================================ */
+
+.error-seccion {
+  padding: 100px 20px 120px;
+  text-align: center;
+}
+
+.error-codigo {
+  margin: 0;
+  font-size: clamp(5rem, 18vw, 10rem);
+  font-weight: 700;
+  line-height: 1;
+  /* Muy tenue: es decoración, el mensaje de verdad está debajo. */
+  color: var(--dorado);
+  opacity: 0.22;
+}
+
+.error-titulo {
+  margin: -0.5rem 0 1rem;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+}
+
+.error-texto {
+  max-width: 46ch;
+  margin: 0 auto 2rem;
+  color: var(--texto-suave);
+  line-height: 1.7;
+}
+
+.error-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+}
+
+.error-btn {
+  padding: 0.65rem 1.6rem;
+  border: 1px solid var(--dorado);
+  border-radius: 999px;
+  background: var(--dorado);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.error-btn:hover,
+.error-btn:focus-visible {
+  background: var(--dorado-oscuro);
+  border-color: var(--dorado-oscuro);
+  color: #ffffff;
+}
+
+.error-btn-suave {
+  background: transparent;
+  color: var(--dorado-oscuro);
+}
+
+.error-btn-suave:hover,
+.error-btn-suave:focus-visible {
+  background: var(--dorado);
+  color: #ffffff;
+}
+
+.error-ayuda {
+  max-width: 44ch;
+  margin: 0 auto;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
