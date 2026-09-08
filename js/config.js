@@ -8,7 +8,7 @@
 (function () {
   'use strict';
 
-  const PRODUCCION = 'https://api.CAMBIAME.cl/api';
+  const PRODUCCION = 'https://iglesia-web-api.onrender.com/api';
   const LOCAL = 'http://localhost:3000/api';
 
   // Live Server, python -m http.server, 127.0.0.1… todo eso es desarrollo.
